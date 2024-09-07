@@ -32,7 +32,7 @@ def get_images():
 			# img_data = base64.b64encode(img_bin).decode('utf-8')
 			result.append({
 				'id': d[0],
-				'link': f'http://{host}/image/{d[0]}',
+				'link': f'{host}/image/{d[0]}',
 				'created_at': d[2]
 			})
 
@@ -85,7 +85,7 @@ def upload_image():
 		conn.commit()
 		cur.close()
 
-		return jsonify({'link': f'http://{host}/image/{img_data[0]}'}), 200
+		return jsonify({'link': f'{host}/image/{img_data[0]}'}), 200
 
 	except Exception as e:
 		return jsonify({'error': str(e)}), 400
