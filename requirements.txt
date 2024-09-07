@@ -7,13 +7,9 @@ greenlet==3.0.3
 itsdangerous==2.2.0
 Jinja2==3.1.4
 MarkupSafe==2.1.5
-mysql==0.0.3
-mysqlclient==2.2.4
-psycopg2==2.9.9
 psycopg2-binary==2.9.9
 python-dotenv==1.0.1
 setuptools==74.1.2
-SQLAlchemy==2.0.34
 typing_extensions==4.12.2
 Werkzeug==3.0.4
 wheel==0.44.0
