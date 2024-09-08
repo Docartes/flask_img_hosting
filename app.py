@@ -36,11 +36,7 @@ def get_images():
 				'created_at': d[2]
 			})
 
-<<<<<<< HEAD
-		return jsonify(result), 200
-	except Exception as e:
-		return jsonify({'error': str(e)}), 400
-=======
+
 		return jsonify({
 			'data': result,
 			'status': 200,
@@ -51,7 +47,6 @@ def get_images():
 			'status': 400,
 			'message': str(e)
 		}), 400
->>>>>>> cb0a160 (change response)
 
 @app.route("/image/<id>", methods=['GET'])
 def get_image_by_id(id):
@@ -80,15 +75,10 @@ def get_image_by_id(id):
 
 		return res
 	except Exception as e:
-<<<<<<< HEAD
-		return jsonify({'error': str(e)}), 400
-=======
-
 		return jsonify({
 			'status': 400,
 			'message': str(e)
 		}), 400
->>>>>>> cb0a160 (change response)
 
 
 @app.route('/upload_image', methods=['POST'])
@@ -106,27 +96,6 @@ def upload_image():
 		conn.commit()
 		cur.close()
 
-<<<<<<< HEAD
-		return jsonify({'link': f'{host}/image/{img_data[0]}'}), 200
-
-	except Exception as e:
-		return jsonify({'error': str(e)}), 400
-
-@app.route('/delete_image/<id>', methods=['DELETE'])
-def remove(id):
-	try:
-		conn = psycopg2.connect(os.getenv('database_url'))
-		cur = conn.cursor()
-		query = "DELETE FROM images_table WHERE id = (%s)"
-		cur.execute(query, (id,))
-		conn.commit()
-		cur.close()
-
-		return jsonify({'message': f'Delete image with id = {id} success'}), 200
-		
-	except Exception as e:
-		return jsonify({'error': str(e)}), 400
-=======
 		return jsonify({
 			"status": 200,
 			'message': 'upload image success',
@@ -138,6 +107,7 @@ def remove(id):
 			'status': 400,
 			'message': str(e)
 		}), 400
+		
 
 @app.route('/delete_image/<id>', methods=['DELETE'])
 def remove(id):
@@ -166,7 +136,6 @@ def remove(id):
 		'status': 404,
 		'message': 'Image Not Found'
 	}), 400
->>>>>>> cb0a160 (change response)
 
 
 if __name__ == "__main__":
