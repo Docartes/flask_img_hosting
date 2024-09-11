@@ -18,7 +18,7 @@ def home():
 @app.route("/images")
 def get_images():
 	try:
-		conn = psycopg2.connect(os.getenv('db_url'))
+		conn = psycopg2.connect(os.getenv('DB_URL'))
 		cur = conn.cursor()
 		query = "SELECT * FROM images_table"
 		cur.execute(query)
@@ -49,7 +49,7 @@ def get_images():
 @app.route("/image/<id>", methods=['GET'])
 def get_image_by_id(id):
 	try:
-		conn = psycopg2.connect(os.getenv('db_url'))
+		conn = psycopg2.connect(os.getenv('DB_URL'))
 		cur = conn.cursor()
 		query = "SELECT * FROM images_table WHERE id = %s"
 		cur.execute(query, (id, ))
@@ -84,7 +84,7 @@ def upload_image():
 	try:
 		image_data = request.files['image']
 
-		conn = psycopg2.connect(os.getenv('db_url'))
+		conn = psycopg2.connect(os.getenv('DB_URL'))
 		cur = conn.cursor()
 		query = "INSERT INTO images_table (image) VALUES (%s)"
 		cur.execute(query, (image_data.read(),))
@@ -112,7 +112,7 @@ def remove(id):
 
 	if ( id != None ):
 		try:
-			conn = psycopg2.connect(os.getenv('db_url'))
+			conn = psycopg2.connect(os.getenv('DB_URL'))
 			cur = conn.cursor()
 			query = "DELETE FROM images_table WHERE id = (%s)"
 			cur.execute(query, (id,))
